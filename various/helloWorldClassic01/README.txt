@@ -1,5 +1,8 @@
 Based on https://spring.io/guides/gs/spring-boot/
 
+NOTE: @ResponseBody with @Controller 
+- or - @RestController makes it serve a response-body and not a web UI output like html
+
 ==================
 SETUP
 ==================

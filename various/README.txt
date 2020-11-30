@@ -6,4 +6,7 @@ https://spring.io/guides/gs/spring-boot/
 - helloWorldActuator01 - with actuator
 
 https://spring.io/guides/gs/actuator-service/
+- helloWorldActuator02 - with actuator
+
 https://spring.io/guides/gs/serving-web-content/
+- helloWeb - to serve a html
