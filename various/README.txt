@@ -10,3 +10,7 @@ https://spring.io/guides/gs/actuator-service/
 
 https://spring.io/guides/gs/serving-web-content/
 - helloWeb - to serve a html
+
+Scheduling tasks (background jobs)
+https://spring.io/guides/gs/scheduling-tasks/
+- Scheduled01
