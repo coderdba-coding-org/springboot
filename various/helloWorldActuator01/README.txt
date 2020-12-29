@@ -21,7 +21,9 @@ processResources {
 }
 
 Created application.properties (see 'shutdown' endpoint section below)
-- To enable shutdown, create application.properties in the project root folder:
+- To enable shutdown, create application.properties in the project root folder (or src/main/java:
+Note: Sometimes, application.properties in src/main/java only is read (see configuration01 example)
+
 management.endpoint.shutdown.enabled=true
 management.endpoints.web.exposure.include=health,info,shutdown
 

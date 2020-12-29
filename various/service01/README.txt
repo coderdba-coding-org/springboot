@@ -1,6 +1,9 @@
 References: 
 -  Main: https://www.tutorialspoint.com/spring_boot/spring_boot_service_components.htm
 
+Additional stuff:
+Added 'actuator' - in build.gradle and application.properties
+
 NOTE: If you create more than one class with @Service, but using the same interface implemented
       Then, you wlll get error like the following below.
       
