@@ -1,0 +1,10 @@
+$timeFilter GROUP BY time($__interval), "application", "cluster", "host" fill(null))
+
+-- STAT
+SELECT sum("count") FROM (SELECT non_negative_derivative(first("count")) as "count" FROM "gom.monitoring.loader.aggregate.event.consumer.timer" WHERE ("application" = 'gommonitoringloaderv1' AND "environment" = 'prod' AND "cluster" = 'gommonitoringloaderv1') AND $timeFilter GROUP BY time($__interval), "application", "cluster", "host" fill(null)) GROUP by time($__interval),  "application"
+
+-- GRAPH
+SELECT sum("count") FROM (SELECT non_negative_derivative(first("count")) as "count" FROM "gom.monitoring.loader.aggregate.event.consumer.timer" WHERE ("application" = 'gommonitoringloaderv1' AND "environment" = 'prod' AND "cluster" = 'gommonitoringloaderv1') AND $timeFilter GROUP BY time($__interval), "application", "cluster", "host" fill(null)) GROUP by time($__interval),  "application"
+
+-- Orders Servie graph
+SELECT sum("count") FROM (SELECT non_negative_derivative(first("count")) as "count" FROM "gom.enterprise.orders.loader.processor.process" WHERE ("application" = 'gomenterpriseordersloaderv1' AND "environment" = 'prod' AND "cluster" = 'gomenterpriseordersloaderv1') AND $timeFilter GROUP BY time($__interval), "application", "cluster", "host" fill(null)) GROUP by time($__interval),  "application"

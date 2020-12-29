@@ -14,3 +14,5 @@ https://spring.io/guides/gs/serving-web-content/
 Scheduling tasks (background jobs)
 https://spring.io/guides/gs/scheduling-tasks/
 - Scheduled01
+
+TBD- https://spring.io/guides/tutorials/rest/

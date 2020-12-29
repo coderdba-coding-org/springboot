@@ -16,6 +16,7 @@ public class TaskToLogSomething {
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
+	// Bean annotation is not really needed
 	@Bean
 	@Scheduled(fixedRate = 5000)
 	public void reportCurrentTime() {
