@@ -1,24 +1,15 @@
-package com.gm.timed;
+package com.gm.jar;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.codahale.metrics.ConsoleReporter;
-import com.codahale.metrics.MetricRegistry;
-import com.codahale.metrics.annotation.Timed;
-
 @SpringBootApplication
 public class Application {
 
-	@Timed
 	public static void main(String[] args) {
-		
-		// Start reportint timed metrics
-		startReport();
 		
 		// This is the runner of the application
 		// Functionalities are loaded based on annotations in programs
@@ -34,12 +25,4 @@ public class Application {
 		}
 	}
 	
-	static void startReport() {
-		MetricRegistry metricRegistry = new MetricRegistry();
-	    ConsoleReporter reporter = ConsoleReporter.forRegistry(metricRegistry)
-	        .convertRatesTo(TimeUnit.SECONDS)
-	        .convertDurationsTo(TimeUnit.MILLISECONDS)
-	        .build();
-	    reporter.start(5, TimeUnit.SECONDS);
-	}
 }

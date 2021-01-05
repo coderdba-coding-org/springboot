@@ -15,11 +15,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
 	id 'java-library'
-}
-
-// ADDED TO ENABLE application.properties file use
-processResources {
-    expand(project.properties)
+	id 'war'
 }
 
 // In this section you declare where to find the dependencies of your project
@@ -46,21 +42,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.3.RELEASE') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	
-	// ADDED FOR TIMED METRICS
-	//compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '3.1.0'
-	
-	// Codahale are old versions - use dropwizard instead - they have same package path as codahale
-	// https://mvnrepository.com/artifact/com.codahale.metrics/metrics-core
-    //compile group: 'com.codahale.metrics', name: 'metrics-core', version: '3.0.2'
-
-    // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-core
-    compile group: 'io.dropwizard.metrics', name: 'metrics-core', version: '4.1.16'
-    
-    // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-annotation
-    compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.16'
-    
-	
 	}
 	
 	// TRYING MORE WAYS FOR THESE: (no need - because test packages were not visible only actually because 
@@ -71,11 +52,30 @@ dependencies {
     //testCompile("org.springframework.boot:spring-boot-starter-test")
     //testImplementation 'org.hamcrest:hamcrest-library:1.3'
     //testCompile 'org.hamcrest:hamcrest-library:1.3'
-    
-    // ADDED FOR SPRINGBOOT ACTUATOR SUPPORT
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 }
 
+
+// COMMENTED FOR SPRINGBOOT
 test {
 	useJUnitPlatform()
+}
+
+// FOR JAR CREATION
+bootJar {
+    mainClassName = 'com.gm.jar.Application2'
+}
+
+// ALTERNATIVE TO bootJar
+springBoot {
+    mainClassName = 'com.gm.jar.Application'
+}
+
+// to directly run the app - does not create a jar
+bootRun {
+    main = 'com.gm.jar.Application'
+}
+
+// FOR WAR CREATION
+bootWar {
+    mainClassName = 'com.gm.jar.Application2'
 }
