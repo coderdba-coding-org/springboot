@@ -15,9 +15,10 @@ import com.codahale.metrics.annotation.Timed;
 @RestController
 public class ControllerHello {
 
-	@Timed 
 	@RequestMapping("/")
+	@Timed (name = "controller.metrics")
 	public String index() {
+		
 		return "Greetings from Spring Boot!";
 	}
 

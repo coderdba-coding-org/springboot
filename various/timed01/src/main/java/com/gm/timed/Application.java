@@ -6,15 +6,21 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.annotation.Timed;
+import com.codahale.metrics.Meter;
 
 @SpringBootApplication
 public class Application {
+	
+	public static MetricRegistry metricRegistry = new MetricRegistry();
+	public Meter reqeusts = metricRegistry.meter("requestCount");
 
-	@Timed
+	@Timed (name = "main.metrics")
 	public static void main(String[] args) {
 		
 		// Start reportint timed metrics
@@ -35,11 +41,29 @@ public class Application {
 	}
 	
 	static void startReport() {
-		MetricRegistry metricRegistry = new MetricRegistry();
+		//MetricRegistry metricRegistry = new MetricRegistry();
+		
 	    ConsoleReporter reporter = ConsoleReporter.forRegistry(metricRegistry)
 	        .convertRatesTo(TimeUnit.SECONDS)
 	        .convertDurationsTo(TimeUnit.MILLISECONDS)
 	        .build();
-	    reporter.start(5, TimeUnit.SECONDS);
+	    
+	    System.out.println ("Metric Registry Contents: " + metricRegistry.getTimers().toString());
+
+	    reporter.start(5, TimeUnit.SECONDS); 
+	    
+	}
+	
+	@RestController
+	public class MainControllerHello {
+
+		@RequestMapping("/hello")
+		@Timed (name = "maincontroller.metrics")
+		public String index() {
+			
+			reqeusts.mark();
+			return "Greetings from Spring Boot - maincontroller!";
+		}
+
 	}
 }
