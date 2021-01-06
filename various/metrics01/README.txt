@@ -2,7 +2,7 @@
 REFERENCES
 ================
 
-Main1: Also, check this one (git in brackets): 
+Main1: (git in brackets): 
 	https://dzone.com/articles/restful-java-metering-by-dropwizard-metrics 
 	(https://github.com/cloudskol/restskol)
 	
@@ -11,6 +11,8 @@ Main1a: https://github.com/mwiede/metrics-feign/blob/master/src/test/java/com/gi
 To fix bean not found issue: https://stackoverflow.com/questions/42230887/spring-boot-application-context-fails-to-load-external-component
 
 For predestroy: https://stackoverflow.com/questions/42230887/spring-boot-application-context-fails-to-load-external-component
+
+For Timer: https://reflectoring.io/transparency-with-spring-boot/
 
 ================================
 TBD - @Timed is not yet working
