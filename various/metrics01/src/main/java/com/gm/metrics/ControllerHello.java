@@ -24,7 +24,7 @@ public class ControllerHello {
 
 	@RequestMapping("/")
 	//Timed annotation is not working yet
-	//@Timed (name = "controller.metrics")
+	@Timed (name = "controller.metrics", absolute = true)
 	public String index() {
 		
 		Timer.Context callTimer = appMetricRegistry.getCallTimer().time();
