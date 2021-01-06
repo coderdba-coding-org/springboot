@@ -61,7 +61,7 @@ dependencies {
     compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.16'
     
     
-    // ADDED FOR GETTER, SETTER
+    // ADDED FOR LOMBOK GETTER, SETTER
     compileOnly 'org.projectlombok:lombok:1.18.16'
 	annotationProcessor 'org.projectlombok:lombok:1.18.16'
 	

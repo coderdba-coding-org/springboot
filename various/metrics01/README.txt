@@ -12,7 +12,6 @@ To fix bean not found issue: https://stackoverflow.com/questions/42230887/spring
 
 For predestroy: https://stackoverflow.com/questions/42230887/spring-boot-application-context-fails-to-load-external-component
 
-
 ================================
 TBD - @Timed is not yet working
 ================================
@@ -23,6 +22,15 @@ https://stackoverflow.com/questions/56377196/timed-not-working-despite-registeri
 SETUP
 ================
 
+-------------------
+Lombok for Eclipse
+-------------------
+sudo java -jar lombok.jar
+
+Then choose Eclipse
+It will install
+Then restart Eclipse
+
 ---------------
 build.gradle
 ---------------
@@ -31,6 +39,13 @@ build.gradle
     
     // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-annotation
     compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.16'
+    
+    // ADDED FOR LOMBOK GETTER, SETTER
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.16'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
     
 ---------------------
 MetricRegistry Bean
