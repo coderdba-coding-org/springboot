@@ -6,6 +6,8 @@ import com.codahale.metrics.Meter;
 import com.codahale.metrics.MetricRegistry;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
@@ -47,5 +49,15 @@ public class AppMetricRegistry {
 	    reporter.start(5, TimeUnit.SECONDS); 
 	    
 	}
+    
+    @Configuration
+    public class ServiceConfig {
+
+        @Bean
+        public MetricRegistry getMetricsRegistry(){
+            return new MetricRegistry();
+        }
+
+    }
 
 }
