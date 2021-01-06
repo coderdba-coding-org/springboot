@@ -14,12 +14,23 @@ For predestroy: https://stackoverflow.com/questions/42230887/spring-boot-applica
 
 For Timer: https://reflectoring.io/transparency-with-spring-boot/
 
+For Timed: Needs additional setup: 
+	https://instil.co/blog/spring-boot-with-dropwizard-metrics/
+	http://metrics.ryantenney.com/
+	(from https://stackoverflow.com/questions/52322091/dropwizard-metrics-annotations-are-not-working-in-spring-boot-1-5)
+
+
 ================================
 TBD - @Timed is not yet working
 ================================
 
 https://stackoverflow.com/questions/56377196/timed-not-working-despite-registering-timedaspect-explicitly-spring-boot-2-1
 
+For Timed: Needs additional setup: 
+	https://instil.co/blog/spring-boot-with-dropwizard-metrics/
+	http://metrics.ryantenney.com/
+	(from https://stackoverflow.com/questions/52322091/dropwizard-metrics-annotations-are-not-working-in-spring-boot-1-5)
+	
 ================
 SETUP
 ================
