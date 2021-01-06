@@ -1,17 +1,29 @@
-====================
-@Timed ANNOTATION
-====================
+============================================================
+Meter, Counter metrics, @Timed ANNOTATION
+============================================================
 
-https://dzone.com/articles/dropwizard-part-3-measuring-your-application-metri
+Note: This is a sort of incomplete - left so for a reason
+- The metric for restcontroller in the main Application.java only works
+- Metric for the restcontroller in the ControllerHello.java does not work
+  because MetricRegistry is not created/autowired there - so, registry does not know it exists
+
+-------------------------------
+Used this as main reference: https://github.com/mwiede/metrics-feign/blob/master/src/test/java/com/github/mwiede/metrics/example/Example.java
+-------------------------------
+Also, check this one (git in brackets): https://dzone.com/articles/restful-java-metering-by-dropwizard-metrics (https://github.com/cloudskol/restskol)
 
 REFERENCES:
 Java: https://stackoverflow.com/questions/28499621/codahale-metrics-using-timed-metrics-annotation-in-plain-java
 - also shows what all metrics are collected
 
+https://dzone.com/articles/dropwizard-part-3-measuring-your-application-metri
+
 Springboot: https://docs.spring.io/spring-metrics/docs/current/public/atlas
 ConsoleReporter, CSV Reporter etc: https://metrics.dropwizard.io/4.1.2/getting-started.html#console-reporter 
 
 ConsoleReporter: https://micrometer.io/docs/guide/consoleReporter
+
+MetricRegistry, various timers: https://www.codota.com/code/java/methods/com.codahale.metrics.MetricRegistry/timer
 
 ==================
 https://www.programcreek.com/java-api-examples/?api=com.codahale.metrics.annotation.Timed

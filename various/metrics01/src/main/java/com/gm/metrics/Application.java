@@ -1,4 +1,4 @@
-package com.gm.timed;
+package com.gm.metrics;
 
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
@@ -23,13 +23,12 @@ public class Application {
 	@Timed (name = "main.metrics")
 	public static void main(String[] args) {
 		
-		// Start reportint timed metrics
-		startReport();
 		
 		// This is the runner of the application
 		// Functionalities are loaded based on annotations in programs
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
 
+		/*
 		// This part of beans is just to print info - not core need
 		System.out.println("Let's inspect the beans provided by Spring Boot:");
 
@@ -38,35 +37,6 @@ public class Application {
 		for (String beanName : beanNames) {
 			System.out.println(beanName);
 		}
-	}
-	
-	static void startReport() {
-		//MetricRegistry metricRegistry = new MetricRegistry();
-		
-	    ConsoleReporter reporter = ConsoleReporter.forRegistry(metricRegistry)
-	        .convertRatesTo(TimeUnit.SECONDS)
-	        .convertDurationsTo(TimeUnit.MILLISECONDS)
-	        .build();
-	    
-	    System.out.println ("Metric Registry Contents: " + metricRegistry.getTimers().toString());
-
-	    reporter.start(5, TimeUnit.SECONDS); 
-	    
-	}
-	
-	@RestController
-	public class MainControllerHello {
-
-		@RequestMapping("/hello")
-		@Timed (name = "maincontroller.metrics")
-		public String index() {
-			
-			reqeusts.mark();
-			
-		    System.out.println ("Metric Registry Contents in MainControllerHello : " + metricRegistry.getTimers().toString());
-
-			return "Greetings from Spring Boot - maincontroller!";
-		}
-
+		*/
 	}
 }
