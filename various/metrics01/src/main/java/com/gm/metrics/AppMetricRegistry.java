@@ -1,9 +1,11 @@
 package com.gm.metrics;
 
+import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.ConsoleReporter;
+
 import com.codahale.metrics.Counter;
 import com.codahale.metrics.Meter;
-import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.Timer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,10 +17,12 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-//import lombok.Getter;
-//import lombok.Setter;
+import lombok.Getter;
+import lombok.Setter;
 
 @Component
+@Getter
+@Setter
 public class AppMetricRegistry {
 	
 	// This autowiring needs a bean to get MetricRegistry object - coded in Config.java
@@ -27,6 +31,7 @@ public class AppMetricRegistry {
     
     private Meter   callMeter;
     private Counter callCounter;
+    private Timer   callTimer;
     private ConsoleReporter reporter;
 
     @PostConstruct
@@ -34,17 +39,24 @@ public class AppMetricRegistry {
     	
     	callMeter = metricRegistry.meter("rest.call.meter");
         callCounter = metricRegistry.counter("rest.call.counter");
+        callTimer = metricRegistry.timer("rest.call.timer");
         
         startReport();
         
     }
     
+    
+    /* getters, setters not required with Lombok, BUT, THAT IS NOT WORKING SOMEHOW */
     public Meter getCallMeter() {
     	return callMeter;
     }
     
     public Counter getCallCounter() {
     	return callCounter;
+    }
+    
+    public Timer getCallTimer() {
+    	return callTimer;
     }
     
     @PreDestroy

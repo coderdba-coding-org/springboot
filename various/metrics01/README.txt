@@ -10,6 +10,15 @@ Main1a: https://github.com/mwiede/metrics-feign/blob/master/src/test/java/com/gi
 
 To fix bean not found issue: https://stackoverflow.com/questions/42230887/spring-boot-application-context-fails-to-load-external-component
 
+For predestroy: https://stackoverflow.com/questions/42230887/spring-boot-application-context-fails-to-load-external-component
+
+
+================================
+TBD - @Timed is not yet working
+================================
+
+https://stackoverflow.com/questions/56377196/timed-not-working-despite-registering-timedaspect-explicitly-spring-boot-2-1
+
 ================
 SETUP
 ================
@@ -26,6 +35,8 @@ build.gradle
 ---------------------
 MetricRegistry Bean
 ---------------------
+https://stackoverflow.com/questions/42230887/spring-boot-application-context-fails-to-load-external-component
+
 MetricRegistry Autowired does not work automatically - it expects a bean
 - https://github.com/spring-projects/spring-boot/issues/11702
 Therefore, coded that bean in Config.java
