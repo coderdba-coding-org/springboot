@@ -27,7 +27,8 @@ public class Application {
 	AppMetricRegistry appMetricRegistry;	
 
 
-	@Timed (name = "main.metrics")
+	//Timed annotation is not working yet
+	//@Timed (name = "main.metrics")
 	public static void main(String[] args) {
 		
 		// This is the runner of the application
