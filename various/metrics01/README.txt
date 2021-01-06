@@ -22,3 +22,31 @@ build.gradle
     
     // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-annotation
     compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.16'
+    
+---------------------
+MetricRegistry Bean
+---------------------
+MetricRegistry Autowired does not work automatically - it expects a bean
+- https://github.com/spring-projects/spring-boot/issues/11702
+Therefore, coded that bean in Config.java
+
+Maybe use Micrometer instead: 
+- https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0.0-M4-Release-Notes#user-facing-changes
+(redirected from https://github.com/spring-projects/spring-boot/issues/11702)
+
+Without the bean, we get this error during runtime:
+		***************************
+		APPLICATION FAILED TO START
+		***************************
+		
+		Description:
+		
+		Field metricRegistry in com.gm.metrics.AppMetricRegistry required a bean of type 'com.codahale.metrics.MetricRegistry' that could not be found.
+		
+		The injection point has the following annotations:
+			- @org.springframework.beans.factory.annotation.Autowired(required=true)
+		
+		
+		Action:
+		
+		Consider defining a bean of type 'com.codahale.metrics.MetricRegistry' in your configuration.
