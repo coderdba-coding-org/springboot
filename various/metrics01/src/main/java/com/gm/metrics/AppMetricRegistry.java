@@ -50,6 +50,7 @@ public class AppMetricRegistry {
 	    
 	}
     
+    /*
     @Configuration
     public class ServiceConfig {
 
@@ -59,5 +60,6 @@ public class AppMetricRegistry {
         }
 
     }
+    */
 
 }
