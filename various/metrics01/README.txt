@@ -8,6 +8,8 @@ Main1: Also, check this one (git in brackets):
 	
 Main1a: https://github.com/mwiede/metrics-feign/blob/master/src/test/java/com/github/mwiede/metrics/example/Example.java
 
+To fix bean not found issue: https://stackoverflow.com/questions/42230887/spring-boot-application-context-fails-to-load-external-component
+
 ================
 SETUP
 ================

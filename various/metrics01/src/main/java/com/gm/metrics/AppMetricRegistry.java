@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 //import lombok.Getter;
 //import lombok.Setter;
@@ -20,11 +21,13 @@ import javax.annotation.PostConstruct;
 @Component
 public class AppMetricRegistry {
 	
+	// This autowiring needs a bean to get MetricRegistry object - coded in Config.java
     @Autowired
     MetricRegistry metricRegistry;
     
     private Meter   callMeter;
     private Counter callCounter;
+    private ConsoleReporter reporter;
 
     @PostConstruct
     public void setUpMetrics() {
@@ -36,10 +39,27 @@ public class AppMetricRegistry {
         
     }
     
+    public Meter getCallMeter() {
+    	return callMeter;
+    }
+    
+    public Counter getCallCounter() {
+    	return callCounter;
+    }
+    
+    @PreDestroy
+    public void destropMetricsContext() {
+
+        if (reporter != null)
+            reporter.stop();
+    }
+    
     void startReport() {
 		//MetricRegistry metricRegistry = new MetricRegistry();
 		
-	    ConsoleReporter reporter = ConsoleReporter.forRegistry(metricRegistry)
+	    //ConsoleReporter reporter = ConsoleReporter.forRegistry(metricRegistry)
+    	
+    	reporter = ConsoleReporter.forRegistry(metricRegistry)
 	        .convertRatesTo(TimeUnit.SECONDS)
 	        .convertDurationsTo(TimeUnit.MILLISECONDS)
 	        .build();
@@ -50,6 +70,7 @@ public class AppMetricRegistry {
 	    
 	}
     
+    // Defined configuration in Config.java
     /*
     @Configuration
     public class ServiceConfig {

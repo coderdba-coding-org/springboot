@@ -24,8 +24,11 @@ public class ControllerHello {
 	AppMetricRegistry appMetricRegistry;
 
 	@RequestMapping("/")
-	@Timed (name = "controller.metrics")
+	//@Timed (name = "controller.metrics")
 	public String index() {
+		
+		appMetricRegistry.getCallCounter().inc();
+		appMetricRegistry.getCallMeter().mark();
 		
 		return "Greetings from Spring Boot!";
 	}

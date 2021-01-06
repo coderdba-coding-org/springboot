@@ -3,6 +3,7 @@ package com.gm.metrics;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,15 +15,20 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.annotation.Timed;
 import com.codahale.metrics.Meter;
 
+import com.gm.metrics.AppMetricRegistry;
+
 @SpringBootApplication
 public class Application {
 	
-	public static MetricRegistry metricRegistry = new MetricRegistry();
-	public Meter reqeusts = metricRegistry.meter("requestCount");
+	//public static MetricRegistry metricRegistry = new MetricRegistry();
+	//public Meter reqeusts = metricRegistry.meter("requestCount");
+	
+	@Autowired
+	AppMetricRegistry appMetricRegistry;	
 
-	@Timed (name = "main.metrics")
+
+	//@Timed (name = "main.metrics")
 	public static void main(String[] args) {
-		
 		
 		// This is the runner of the application
 		// Functionalities are loaded based on annotations in programs

@@ -15,6 +15,11 @@ public class Config {
         public MetricRegistry getMetricsRegistry(){
             return new MetricRegistry();
         }
+        
+        @Bean
+        public AppMetricRegistry getAppMetricsRegistry(){
+            return new AppMetricRegistry();
+        }
 
     }
 }
