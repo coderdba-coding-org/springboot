@@ -22,9 +22,9 @@ public class ControllerHello {
 	@Autowired
 	AppMetricRegistry appMetricRegistry;
 
+	// Timed annotation works after seting up Ryan Tenney stuff in main application class
 	@RequestMapping("/")
-	//Timed annotation is not working yet
-	@Timed (name = "controller.metrics", absolute = true)
+	@Timed (name = "timed.controllerHelloEndpointRoot.metrics", absolute = true) 	
 	public String index() {
 		
 		Timer.Context callTimer = appMetricRegistry.getCallTimer().time();

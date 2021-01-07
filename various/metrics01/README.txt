@@ -14,9 +14,10 @@ For predestroy: https://stackoverflow.com/questions/42230887/spring-boot-applica
 
 For Timer: https://reflectoring.io/transparency-with-spring-boot/
 
-For Timed: Needs additional setup: 
+For Timed: Needs additional setup:  Ryan Tenney stuff
 	https://instil.co/blog/spring-boot-with-dropwizard-metrics/
 	http://metrics.ryantenney.com/
+	https://github.com/ryantenney/metrics-spring
 	(from https://stackoverflow.com/questions/52322091/dropwizard-metrics-annotations-are-not-working-in-spring-boot-1-5)
 
 

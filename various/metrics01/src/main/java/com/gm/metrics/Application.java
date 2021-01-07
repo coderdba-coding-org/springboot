@@ -17,8 +17,14 @@ import com.codahale.metrics.Meter;
 
 import com.gm.metrics.AppMetricRegistry;
 
+import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
+import com.ryantenney.metrics.spring.config.annotation.MetricsConfigurerAdapter;
+
 @SpringBootApplication
-public class Application {
+//Make your SpringBootApplication extend Ryan Tenney’s MetricsConfigurerAdapter 
+// and add his @EnableMetrics(proxyTargetClass = true) annotation to your Application class.
+@EnableMetrics(proxyTargetClass = true) 
+public class Application extends MetricsConfigurerAdapter {
 	
 	//public static MetricRegistry metricRegistry = new MetricRegistry();
 	//public Meter reqeusts = metricRegistry.meter("requestCount");
@@ -27,8 +33,8 @@ public class Application {
 	AppMetricRegistry appMetricRegistry;	
 
 
-	//Timed annotation is not working yet
-	//@Timed (name = "main.metrics")
+	//Timed annotation does not work for main method
+	//@Timed (name = "timed.mainApplicationMainMethod.metrics")
 	public static void main(String[] args) {
 		
 		// This is the runner of the application

@@ -45,22 +45,6 @@ public class AppMetricRegistry {
         
     }
     
-    
-    /* getters, setters not required with Lombok, BUT, THAT IS NOT WORKING SOMEHOW */
-    /*
-    public Meter getCallMeter() {
-    	return callMeter;
-    }
-    
-    public Counter getCallCounter() {
-    	return callCounter;
-    }
-    
-    public Timer getCallTimer() {
-    	return callTimer;
-    }
-    */
-    
     @PreDestroy
     public void destropMetricsContext() {
 
