@@ -6,7 +6,7 @@ Based on https://spring.io/guides/gs/spring-boot/
     In the sense that 
     the former serves just a string output, 
     the latter serves a JSON - which is a dump of a Greeting object
-    	See hellowWorldJson for the latter
+    	See hellowWorldJson01 for the latter
 
 ==================
 NOTES
@@ -22,7 +22,7 @@ SETUP
 ==================
 Updated these:
 build.gradle
-gradle/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.properties
 
 ==================
 TO RUN
