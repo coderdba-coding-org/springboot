@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController	
 @RequestMapping("/products")
@@ -41,6 +45,24 @@ public class ProductController {
 		
 		product.setPrice(product.getPrice() * 0.5);
 		return product;
+	}
+	
+	// GET with a request param of 'string' type
+	// where request is sent like URL/get?productString=%7B%22id%22%3A%201%2C%22name%22%3A%20%22Asus%20Zenbook%22%2C%22price%22%3A%20800%7D
+	@GetMapping("/getfromstring")
+	@ResponseBody
+	public Product getProductStringParam(@RequestParam String productString) throws JsonMappingException, JsonProcessingException {
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		
+		System.out.println("Product input parameter is: " + productString);
+
+		//productString = "{\"id\": 1,\"name\": \"Asus Zenbook\",\"price\": 800}";
+		//System.out.println("Hardcoded product string is: " + productString);
+		
+		Product product = objectMapper.readValue(productString, Product.class);
+	    return product;
+		//return new Product();
 	}
 
 }
