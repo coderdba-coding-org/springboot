@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.annotation.Metered;
 import com.codahale.metrics.annotation.Timed;
 import com.codahale.metrics.Timer;
 
@@ -25,6 +26,7 @@ public class ControllerHello {
 	// Timed annotation works after seting up Ryan Tenney stuff in main application class
 	@RequestMapping("/")
 	@Timed (name = "timed.controllerHelloEndpointRoot.metrics", absolute = true) 	
+	@Metered (name = "metered.controllerHelloEndpointRoot.metrics") 
 	public String index() {
 		
 		Timer.Context callTimer = appMetricRegistry.getCallTimer().time();
