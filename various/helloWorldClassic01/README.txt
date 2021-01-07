@@ -1,11 +1,21 @@
+==================
+REFERENCE
+==================
 Based on https://spring.io/guides/gs/spring-boot/
+--> This is a bit different from https://spring.io/guides/gs/rest-service/
+    In the sense that 
+    the former serves just a string output, 
+    the latter serves a JSON - which is a dump of a Greeting object
+    	See hellowWorldJson for the latter
 
+==================
+NOTES
+==================
 NOTE: @ResponseBody with @Controller 
 - or - @RestController makes it serve a response-body and not a web UI output like html
 
 --> This is different from how it is implemented as a web-UI response and not response-body 
     as in helloWeb01 based on Based on https://spring.io/guides/gs/serving-web-content/
-
 
 ==================
 SETUP

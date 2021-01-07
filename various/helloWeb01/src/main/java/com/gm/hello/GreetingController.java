@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+// Note: This is NOT 'RestController" - instead this ends up serving a web-output
+// RestController or Controller plus ResponseBody makes it REST and not Web
 @Controller
 public class GreetingController {
 
