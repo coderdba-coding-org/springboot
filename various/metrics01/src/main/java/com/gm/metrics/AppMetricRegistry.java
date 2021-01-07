@@ -4,6 +4,7 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.ConsoleReporter;
 
 import com.codahale.metrics.Counter;
+import com.codahale.metrics.Histogram;
 import com.codahale.metrics.Meter;
 import com.codahale.metrics.Timer;
 
@@ -33,6 +34,7 @@ public class AppMetricRegistry {
     private Counter callCounter;
     private Timer   callTimer;
     private ConsoleReporter reporter;
+    private Histogram callHistogram;
 
     @PostConstruct
     public void setUpMetrics() {
@@ -40,6 +42,7 @@ public class AppMetricRegistry {
     	callMeter = metricRegistry.meter("rest.call.meter");
         callCounter = metricRegistry.counter("rest.call.counter");
         callTimer = metricRegistry.timer("rest.call.timer");
+        callHistogram = metricRegistry.histogram("rest.call.histogram");
         
         startReport();
         
