@@ -17,6 +17,7 @@ import com.codahale.metrics.Meter;
 
 import com.gm.metrics.AppMetricRegistry;
 
+// Ryan Tenney stuff for enabling Timed metrics 
 import com.ryantenney.metrics.spring.config.annotation.EnableMetrics;
 import com.ryantenney.metrics.spring.config.annotation.MetricsConfigurerAdapter;
 
