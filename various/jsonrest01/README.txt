@@ -8,6 +8,7 @@ REFERENCE
 ======================
 https://www.baeldung.com/spring-mvc-send-json-parameters
 https://www.baeldung.com/spring-boot-json
+https://www.baeldung.com/spring-resttemplate-post-json
 
 https://www.baeldung.com/spring-request-response-body --> @RequestBody, @ResponseBody annotations, CONTENT_TYPE 
 
