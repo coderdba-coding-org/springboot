@@ -4,6 +4,8 @@ PURPOSE
 Sending JSON in request
 Updating response header the way we want
 
+Test cases also 
+
 ===========
 REFERENCES
 ===========
@@ -14,6 +16,9 @@ https://www.baeldung.com/spring-resttemplate-post-json
 To set header in response
 https://www.baeldung.com/spring-response-header 
 https://stackoverflow.com/questions/29488956/simple-spring-boot-application-httpservletresponse-needed
+
+To use RestTemplate (in test cases)
+https://www.tutorialspoint.com/spring_boot/spring_boot_rest_template.htm
 
 ==============
 RUN MANUALLY
