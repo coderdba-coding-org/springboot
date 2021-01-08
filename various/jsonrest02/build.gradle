@@ -7,13 +7,29 @@
  */
 
 // Apply the java-library plugin to add support for Java Library
-apply plugin: 'java-library'
+//apply plugin: 'java-library'  // COMMENTED OUT, AND ADDED IN 'plugins' section
+
+// ADDED FOR SPRINGBOOT
+plugins {
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'java-library'
+}
+
+// ADDED TO ENABLE application.properties file use
+processResources {
+    expand(project.properties)
+}
 
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    
+    // ADDED FOR SPRINGBOOT
+    mavenCentral()
 }
 
 dependencies {
@@ -25,5 +41,56 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    
+    // ADDED FOR SPRINGBOOT
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.3.RELEASE') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	
+	// ADDED FOR TIMED METRICS
+	//compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '3.1.0'
+	
+	// Codahale are old versions - use dropwizard instead - they have same package path as codahale
+	// https://mvnrepository.com/artifact/com.codahale.metrics/metrics-core
+    //compile group: 'com.codahale.metrics', name: 'metrics-core', version: '3.0.2'
+
+    // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-core
+    compile group: 'io.dropwizard.metrics', name: 'metrics-core', version: '4.1.16'
+    
+    // https://mvnrepository.com/artifact/io.dropwizard.metrics/metrics-annotation
+    compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.16'
+    
+    
+    // ADDED FOR LOMBOK GETTER, SETTER
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.16'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+	
+	// FOR @TIMED TO WORK WITH DROPWIZARD - AND SPRINGBOOT
+	// https://instil.co/blog/spring-boot-with-dropwizard-metrics/
+	compile ('com.ryantenney.metrics:metrics-spring:3.1.3') {
+    	exclude group: 'com.codahale.metrics'
+    	exclude group: 'org.springframework'
+	}
+	
+	
+	}
+	
+	// TRYING MORE WAYS FOR THESE: (no need - because test packages were not visible only actually because 
+	// the test program should have been in test directory and not in src directory
+	//testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.3.RELEASE'
+    //testCompile("junit:junit")
+    //testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //testCompile("org.springframework.boot:spring-boot-starter-test")
+    //testImplementation 'org.hamcrest:hamcrest-library:1.3'
+    //testCompile 'org.hamcrest:hamcrest-library:1.3'
+    
+    // ADDED FOR SPRINGBOOT ACTUATOR SUPPORT
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 }
 
+test {
+	useJUnitPlatform()
+}

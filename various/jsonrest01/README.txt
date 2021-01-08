@@ -14,7 +14,7 @@ https://www.baeldung.com/spring-request-response-body --> @RequestBody, @Respons
 
 ObjectMapper
 https://www.baeldung.com/jackson-object-mapper-tutorial --> objectmapper to map request-param (not request-body) string to class
-http://tutorials.jenkov.com/java-json/jackson-objectmapper.html#read-object-from-json-string --> Very good
+Very good, various: http://tutorials.jenkov.com/java-json/jackson-objectmapper.html#read-object-from-json-string --> Very good
 
 https://www.baeldung.com/spring-boot-json
 https://www.baeldung.com/spring-resttemplate-post-json
