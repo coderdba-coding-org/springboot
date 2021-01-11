@@ -15,4 +15,10 @@ Scheduling tasks (background jobs)
 https://spring.io/guides/gs/scheduling-tasks/
 - Scheduled01
 
+===============
 TBD- https://spring.io/guides/tutorials/rest/
+
+===============
+TBD - jsonres03
+TBD - oracle01
+TBD - autowired01
