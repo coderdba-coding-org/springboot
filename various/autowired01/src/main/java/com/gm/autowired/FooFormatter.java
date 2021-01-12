@@ -3,7 +3,7 @@ package com.gm.autowired;
 import org.springframework.stereotype.Component;
 
 @Component("fooFormatter")
-public class FooFormatter {
+public class FooFormatter  {
 	
 	// constructor
 	// NO CONSTRUCTOR INTENDED

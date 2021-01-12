@@ -1,6 +1,7 @@
 package com.gm.autowired;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,7 +15,7 @@ public class FooService {
     private FooFormatter fooFormatter2;
     
     // ALTERNATIVE 1
-    // Do Autowired for both properties
+    // Do Autowired for both properties fooFrmatter and fooFormatter2
     //
     // ALTERNATIVE 2
     // Create an Autowired constructor as below
@@ -26,6 +27,15 @@ public class FooService {
     //
     // ALTERNATIVES - OTHER ALTERNATIVES - COULD BE MANY
     
+ 
+    /* Somehow this is not understood/working
+    @Autowired(required = false)
+    private FooDAOx dataAccessor; 
+    */
+    
+    @Autowired
+    @Qualifier("oneFormatter")
+    private Formatter myFormatter;
     
     // METHODS
     
@@ -35,7 +45,18 @@ public class FooService {
     }
     
     public void doStuff() {
+    	
+    	System.out.println("In doStuff(): calling fooFormatter.format()");
     	fooFormatter.format();
+    	
+    	System.out.println("In doStuff(): calling fooFormatter2.format()");
     	fooFormatter2.format();
+    	
+    	System.out.println("In doStuff(): calling myFormatter.format()");
+    	String message = myFormatter.format();
+    	System.out.println("In doStuff(): Output of calling myFormatter.format():" + message);
+    	
+    	
+    	
     }
 }
