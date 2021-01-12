@@ -25,25 +25,27 @@ public class FooService {
     //     this.fooFormatter2 = fooFormatter2;
     // }
     //
+    // ALTERNATIVE 3
+    // Use an autowired setter method (see below)
+    //
     // ALTERNATIVES - OTHER ALTERNATIVES - COULD BE MANY
     
+    @Autowired
+    public void setFooFormatter2(FooFormatter aFooFormatter) {
+     	this.fooFormatter2 = aFooFormatter;
+    }
  
     /* Somehow this is not understood/working
     @Autowired(required = false)
     private FooDAOx dataAccessor; 
     */
     
+    // Disambiguation when multiple classes implement an interface like Formatter
     @Autowired
     @Qualifier("oneFormatter")
     private Formatter myFormatter;
     
     // METHODS
-    
-    @Autowired
-    public void setFooFormatter2(FooFormatter aFooFormatter) {
-     	this.fooFormatter2 = aFooFormatter;
-    }
-    
     public void doStuff() {
     	
     	System.out.println("In doStuff(): calling fooFormatter.format()");
