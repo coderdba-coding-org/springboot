@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import com.gm.autowired.Annotations.FormatterTypeQualifer;
+
 @Component
 public class FooService { 
 	
@@ -45,6 +47,11 @@ public class FooService {
     @Qualifier("oneFormatter")
     private Formatter myFormatter;
     
+    // Disambiguation with the custom-qualifier defined in Annotations.java when multiple classes implement an interface like Formatter
+    @Autowired
+    @FormatterTypeQualifer("Two")
+    private Formatter myAnotherFormatter;
+    
     // Autowiring by name - if the property/field of a class matches with the bean-name then the property will be assigned that bean
     @Autowired
     private Formatter twoFormatter;
@@ -72,6 +79,10 @@ public class FooService {
     	System.out.println("In doStuff(): calling formatterPrimary.format()");
     	message = formatterPrimary.format();
     	System.out.println("In doStuff(): Output of calling formatterPrimary.format():" + message);  
+    	
+    	System.out.println("In doStuff(): calling myAnotherFormatter.format()");
+    	message = myAnotherFormatter.format();
+    	System.out.println("In doStuff(): Output of calling myAnotherFormatter.format():" + message);  
     	
     }
 }
