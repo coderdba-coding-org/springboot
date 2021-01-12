@@ -40,10 +40,17 @@ public class FooService {
     private FooDAOx dataAccessor; 
     */
     
-    // Disambiguation when multiple classes implement an interface like Formatter
+    // Disambiguation with @Qualifier when multiple classes implement an interface like Formatter
     @Autowired
     @Qualifier("oneFormatter")
     private Formatter myFormatter;
+    
+    // Autowiring by name - if the property/field of a class matches with the bean-name then the property will be assigned that bean
+    @Autowired
+    private Formatter twoFormatter;
+    
+    @Autowired
+    private FormatterPrimary formatterPrimary; 
     
     // METHODS
     public void doStuff() {
@@ -57,8 +64,14 @@ public class FooService {
     	System.out.println("In doStuff(): calling myFormatter.format()");
     	String message = myFormatter.format();
     	System.out.println("In doStuff(): Output of calling myFormatter.format():" + message);
+    		
+    	System.out.println("In doStuff(): calling twoFormatter.format()");
+    	message = twoFormatter.format();
+    	System.out.println("In doStuff(): Output of calling twoFormatter.format():" + message);  
     	
-    	
+    	System.out.println("In doStuff(): calling formatterPrimary.format()");
+    	message = formatterPrimary.format();
+    	System.out.println("In doStuff(): Output of calling formatterPrimary.format():" + message);  
     	
     }
 }
