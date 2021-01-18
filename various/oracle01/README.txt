@@ -16,3 +16,7 @@ https://examples.javacodegeeks.com/spring-boot-oracle-connection-example/
 --> @Retention, creating own annotations:
 http://tutorials.jenkov.com/java/annotations.html#retention
 https://www.baeldung.com/java-custom-annotation
+
+HikariCP:
+MySQL - http://zetcode.com/articles/hikaricp/
+https://www.baeldung.com/hikaricp
