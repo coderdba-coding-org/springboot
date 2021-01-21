@@ -14,21 +14,38 @@ REFERENCES
 
 Springboot: 
 https://www.baeldung.com/spring-boot-hibernate
+https://spring.io/blog/2011/02/10/getting-started-with-spring-data-jpa/
 https://developer.okta.com/blog/2018/12/13/build-basic-app-spring-boot-jpa (describes JPA, Hibernate etc)
 - also see https://vladmihalcea.com/9-postgresql-high-performance-performance-tips/
 https://zetcode.com/springboot/postgresql/ (with Thymeleaf for html, spring-boot-starter-data-jpa, Hibernate etc)
 https://dzone.com/articles/spring-boot-and-postgresql
 
 ---------------------
-OTHER REFERENCES
+JPA
 ---------------------
 JPA - Java Persistence API: https://www.infoworld.com/article/3379043/what-is-jpa-introduction-to-the-java-persistence-api.html
 - ORM - Object Relational Mapping - to use with RDBMS
 - Hibernate - for RDBMS - http://hibernate.org/orm/
 - EclipseLink - for NOSQL - https://www.eclipse.org/eclipselink/
 
+JPA Repository "JpaRepository" Spec: 
+https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html
+(from https://docs.spring.io/spring-data/jpa/docs/current/api/overview-summary.html)
+
 Java-Postgres non springboot: https://www.tutorialspoint.com/postgresql/postgresql_java.htm
 
+JPA:
+Example: https://spring.io/blog/2011/02/10/getting-started-with-spring-data-jpa/
+
+JPA Repository - working with repositories (*** MUST READ ***): 
+	https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
+	https://docs.spring.io/spring-data/data-commons/docs/2.3.3.RELEASE/reference/html/#mapping.fundamentals
+	
+JPA Repository related: https://www.baeldung.com/spring-data-repositories
+
+---------------------
+OTHER REFERENCES
+---------------------
 Spring Data: https://spring.io/projects/spring-data
 
 For HikariCP connection pooler:
