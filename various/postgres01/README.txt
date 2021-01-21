@@ -5,6 +5,9 @@ POSTGRES JDBC
 Purpose:
 Simple example using JDBC drivers, JPA, Spring-Data JPA 'Hibernate' to connect to Postgres and do CRUD
 
+Note:
+Dependency spring-boot-starter-data-jpa also brings Hibernate because it is based on Hibernate
+
 ==============================
 REFERENCES
 ==============================
@@ -19,7 +22,12 @@ https://dzone.com/articles/spring-boot-and-postgresql
 ---------------------
 OTHER REFERENCES
 ---------------------
-Java: https://www.tutorialspoint.com/postgresql/postgresql_java.htm
+JPA - Java Persistence API: https://www.infoworld.com/article/3379043/what-is-jpa-introduction-to-the-java-persistence-api.html
+- ORM - Object Relational Mapping - to use with RDBMS
+- Hibernate - for RDBMS - http://hibernate.org/orm/
+- EclipseLink - for NOSQL - https://www.eclipse.org/eclipselink/
+
+Java-Postgres non springboot: https://www.tutorialspoint.com/postgresql/postgresql_java.htm
 
 Spring Data: https://spring.io/projects/spring-data
 
@@ -27,9 +35,16 @@ For HikariCP connection pooler:
 https://www.baeldung.com/hikaricp
 https://mkyong.com/spring-boot/spring-boot-spring-data-jpa-postgresql/ --> with Hikari
 
+For Lombok getter and setter:
+https://springframework.guru/using-project-lombok-with-gradle/
+
 ==============================
 NOTES
 ==============================
+Gradle dependency spring-boot-starter-data-jpa also brings Hibernate because it is based on Hibernate
+
+Use "javax.persistence.Entity" in 'models' - and not the hibernate.annotations.Entity which seems to have been deprecated
+
 https://zetcode.com/springboot/postgresql/ 
 - The spring-boot-starter-thymeleaf is a starter for building MVC web applications using Thymeleaf views. 
 - The spring-boot-starter-data-jpa is a starter for using Spring Data JPA with Hibernate.
@@ -47,5 +62,6 @@ SETUP
 build.gradle:
 
 Add Postgres drivers in compile section
+Add spring-boot-starter-data-jpa for JPA/Hibernate
 
 

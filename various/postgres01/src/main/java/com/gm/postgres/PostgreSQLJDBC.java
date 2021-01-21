@@ -1,5 +1,7 @@
 package com.gm.postgres;
 
+// Taken from https://www.tutorialspoint.com/postgresql/postgresql_java.htm
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
