@@ -14,11 +14,19 @@ REFERENCES
 
 Springboot: 
 https://www.baeldung.com/spring-boot-hibernate
-https://spring.io/blog/2011/02/10/getting-started-with-spring-data-jpa/
+https://www.baeldung.com/spring-data-repositories
+
+https://zetcode.com/springboot/postgresql/ (with Thymeleaf for html, spring-boot-starter-data-jpa, Hibernate etc)
+
 https://developer.okta.com/blog/2018/12/13/build-basic-app-spring-boot-jpa (describes JPA, Hibernate etc)
 - also see https://vladmihalcea.com/9-postgresql-high-performance-performance-tips/
-https://zetcode.com/springboot/postgresql/ (with Thymeleaf for html, spring-boot-starter-data-jpa, Hibernate etc)
 https://dzone.com/articles/spring-boot-and-postgresql
+
+https://spring.io/blog/2011/02/10/getting-started-with-spring-data-jpa/
+https://docs.spring.io/spring-data/data-commons/docs/2.3.3.RELEASE/reference/html/#mapping.fundamentals
+
+Sqls:
+https://zetcode.com/springboot/postgresql/
 
 ---------------------
 JPA
@@ -76,9 +84,20 @@ https://developer.okta.com/blog/2018/12/13/build-basic-app-spring-boot-jpa
 ==============================
 SETUP
 ==============================
-build.gradle:
+------------
+build.gradle
+------------
 
 Add Postgres drivers in compile section
 Add spring-boot-starter-data-jpa for JPA/Hibernate
 
+--------------------------------
+application.properties
+--------------------------------
+To enable JPA entities save tables and such with 'uppercase' names
+
+src/main/resources/application.properties:
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+Add Postgres stuff per https://zetcode.com/springboot/postgresql/
 
