@@ -1,0 +1,34 @@
+==========================
+NOTES THAT APPLY TO ALL
+==========================
+
+-----------------------
+application.properties
+-----------------------
+Place it in src/main/resources
+In Eclipse: Add src/main/resources folder to 'sources' in project -> properties
+
+-----------------------
+To do 'gradlew run'
+-----------------------
+In build.gradle:
+- Add plugin 'application'
+- Add main class name
+- Example: (as in postgres01 project)
+
+plugins {
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'java-library'
+	id 'application'
+}
+
+mainClassName = 'com.gm.postgres.Application'
+
+-----------------------
+To create JAR, WAR
+-----------------------
+
+Refer to jar01 project
+

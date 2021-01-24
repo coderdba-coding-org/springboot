@@ -9,13 +9,17 @@
 // Apply the java-library plugin to add support for Java Library
 //apply plugin: 'java-library'  // COMMENTED OUT, AND ADDED IN 'plugins' section
 
+
 // ADDED FOR SPRINGBOOT
 plugins {
 	id 'org.springframework.boot' version '2.3.3.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
 	id 'java-library'
+	id 'application'
 }
+
+mainClassName = 'com.gm.postgres.Application'
 
 // ADDED TO ENABLE application.properties file use
 processResources {
