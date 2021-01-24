@@ -18,13 +18,19 @@ public class MyController {
 	@Autowired
 	private BookService bookService;
 	
+    @GetMapping("/")
+    public String showHome() {
+    	    	
+    	return ("Try the following endpoints:" + System.lineSeparator() +  "/showBooks");
+
+    }
+    
     @GetMapping("/showBooks")
     public List showBooks() {
 
+    	// If using html output with model and such. Refer to zetcode tutorial
         //var books = (List<Book>) bookService.list();
-
         //model.addAttribute("cities", cities);
-
         //return "showCities";
     	
     	return bookService.list();
