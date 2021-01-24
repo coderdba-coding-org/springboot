@@ -2,6 +2,11 @@
 NOTES THAT APPLY TO ALL
 ==========================
 
+-----------------------------------
+Application withour REST Controller
+-----------------------------------
+Refer to autowired01 project
+
 -----------------------
 application.properties
 -----------------------
@@ -11,6 +16,7 @@ In Eclipse: Add src/main/resources folder to 'sources' in project -> properties
 -----------------------
 To do 'gradlew run'
 -----------------------
+Also a lot in https://spring.io/guides/gs/gradle/
 In build.gradle:
 - Add plugin 'application'
 - Add main class name
@@ -29,6 +35,12 @@ mainClassName = 'com.gm.postgres.Application'
 -----------------------
 To create JAR, WAR
 -----------------------
-
+Also a lot in https://spring.io/guides/gs/gradle/
 Refer to jar01 project
 
+-----------------------
+JPA and Hikari
+-----------------------
+spring-boot-starter-data-jpa comes with HikariCP as default
+That will automatically create connection pools with database
+Disable it if you want to use pgbouncer or tomcat pool - not sure how to do it (TBD)

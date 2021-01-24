@@ -50,6 +50,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.3.RELEASE') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 	
 	// ADDED FOR TIMED METRICS
 	//compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '3.1.0'
@@ -78,9 +79,9 @@ dependencies {
     // JPA/Hibernate
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.2'
+    // To exclude hikari: https://stackoverflow.com/questions/50173081/how-to-replace-default-hikari-cp-to-tomcat-pool-on-spring-boot-2-0
+
     
-	
-	}
 	
 	// TRYING MORE WAYS FOR THESE: (no need - because test packages were not visible only actually because 
 	// the test program should have been in test directory and not in src directory

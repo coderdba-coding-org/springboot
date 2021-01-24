@@ -15,6 +15,9 @@ Scheduling tasks (background jobs)
 https://spring.io/guides/gs/scheduling-tasks/
 - Scheduled01
 
+Application withour REST Controller
+- Refer to autowired01 project
+
 ===============
 TBD- https://spring.io/guides/tutorials/rest/
 

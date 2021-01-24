@@ -28,6 +28,10 @@ https://docs.spring.io/spring-data/data-commons/docs/2.3.3.RELEASE/reference/htm
 Sqls:
 https://zetcode.com/springboot/postgresql/
 
+Postgres Connection Properties:
+- Main project reference: https://zetcode.com/springboot/postgresql/
+- has Hikari stuff: https://stackoverflow.com/questions/51242938/spring-boot-application-gets-stuck-on-hikari-pool-1-starting
+
 ---------------------
 JPA
 ---------------------
@@ -51,6 +55,13 @@ JPA Repository - working with repositories (*** MUST READ ***):
 	
 JPA Repository related: https://www.baeldung.com/spring-data-repositories
 
+Disable Hikari that comes with JPA: 
+--> Hikari seems to be default pooler in JPA/JDBC
+- https://stackoverflow.com/questions/55161884/spring-boot-2-1-app-without-hikaricp-connection-pooler
+	- Use custom pooler: https://stackoverflow.com/questions/53845645/creating-custom-connection-pool-in-spring-boot-application
+- https://stackoverflow.com/questions/50173081/how-to-replace-default-hikari-cp-to-tomcat-pool-on-spring-boot-2-0
+- How to exclude stuff in Gradle: https://discuss.gradle.org/t/excluding-dependency-from-a-single-configuration/26941
+
 ---------------------
 OTHER REFERENCES
 ---------------------
@@ -59,6 +70,7 @@ Spring Data: https://spring.io/projects/spring-data
 For HikariCP connection pooler:
 https://www.baeldung.com/hikaricp
 https://mkyong.com/spring-boot/spring-boot-spring-data-jpa-postgresql/ --> with Hikari
+https://www.baeldung.com/spring-boot-hikari
 
 For Lombok getter and setter:
 https://springframework.guru/using-project-lombok-with-gradle/

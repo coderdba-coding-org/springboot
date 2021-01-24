@@ -46,6 +46,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.3.RELEASE') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	} // this curly bracket belongs here
 	
 	// ADDED FOR TIMED METRICS
 	//compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '3.1.0'
@@ -61,7 +62,7 @@ dependencies {
     compile group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.16'
     
 	
-	}
+	//} // this curly bracket does not belong here - moved up
 	
 	// TRYING MORE WAYS FOR THESE: (no need - because test packages were not visible only actually because 
 	// the test program should have been in test directory and not in src directory
