@@ -1,26 +1,30 @@
 package jpa;
 
-import jpa.OrderEntity;
+import jpa.OrderJPARepository;
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
 @Repository
-public interface OrderRepository extends JpaRepository<OrderEntity, String>{
-
-    public OrderEntity findByOrderNumber(String orderNumber);
+@Slf4j
+public class OrderRepository implements OrderRepositoryInterface {
+	
+    @Autowired
+    OrderJPARepository orderJPARepository;
+	
+    @Override
+    public void save(Order order) {
+        OmsOrderEntity orderEntity = mapper.mapOrder(order);
+        orderRepository.save(orderEntity);
+    }
     
-    public long findOrderCount(String orderType);
+    @Override
+    public void saveAndFlush(Order order) {
+        OmsOrderEntity orderEntity = mapper.mapOrder(order);
+        orderRepository.saveAndFlush(orderEntity);
+    }
     
-    @Query(value = " select * from OMS_ORDER where UPPER(ORDER_TYPE) = UPPER( ?1 )", nativeQuery = true)
-    public List<OrderEntity> findOrdersByOrderType(String orderType, Pageable pageable);
-    
-    @Query(value = " select * from OMS_ORDER where UPPER(ORDER_TYPE) IN UPPER( :orderTypes )", nativeQuery = true)
-    public List<OrderEntity> findOrdersByOrderTypes(@Param("orderTypes") List<String> orderTypes);
-
 }

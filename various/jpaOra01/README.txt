@@ -1,6 +1,9 @@
 https://spring.io/guides/gs/accessing-data-jpa/
 
-Oracle, JPARepository, year 2021: https://bezkoder.com/spring-boot-hibernate-oracle/
+USING THIS: Oracle, JPARepository, year 2021: https://bezkoder.com/spring-boot-hibernate-oracle/
+
+
+OTHER REFERENCES:
 Oracle, JPARepository, Oracle version 12: https://www.javaguides.net/2020/01/spring-boot-hibernate-oracle-crud-example.html 
 
 Oracle: https://dzone.com/articles/spring-boot-jpa-hibernate-oracle
