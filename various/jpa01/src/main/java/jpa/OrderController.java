@@ -22,19 +22,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@CrossOrigin(origins = "http://localhost:8081")
+//@CrossOrigin(origins = "http://localhost:8081")
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 public class OrderController {
 	
 	@Autowired
 	OrderRepository orderRepository;
 
-	@GetMapping("/tutorials")
-	public ResponseEntity<List<OrderEntity>> getAllOrders(@RequestParam(required = false) String title) {
+	@GetMapping("/")
+	public String index() {
+		return "Greetings from Spring Boot JPA application!";
+	}
+	
+	@GetMapping("/endpoints")
+	public String endpoints() {
+		return "Endpoints available:  orders get";
+	}
+	
+	@GetMapping("/orders")
+	public ResponseEntity<List<OrderEntity>> getAllOrders(@RequestParam(required = false) String orderKey) {
+				
 		try {
 			
-			List<OrderEntity> orders = new ArrayList<OrderEntity>();		
+			List<OrderEntity> orders = new ArrayList<OrderEntity>();	
+			
+			if (orderKey == null)
+				orderRepository.findAll().forEach(orders::add);
+			else
+				//orderRepository.findByTitleContaining(title).forEach(tutorials::add);
+				orderRepository.findAll().forEach(orders::add); // for now do a findAll itself
+
+			
 			if (orders.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
@@ -42,6 +61,22 @@ public class OrderController {
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping("/ordersfound1")
+	public String reportOrdersExist(@RequestParam(required = false) String orderKey) {
+				
+		try {
+			
+			List<OrderEntity> orders = new ArrayList<OrderEntity>();		
+			if (orders.isEmpty()) {
+				return "No orders exist";
+			}
+			return "Orders exist";
+			
+		} catch (Exception e) {
+			return "Error checking orders";
 		}
 	}
 

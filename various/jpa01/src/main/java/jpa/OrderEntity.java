@@ -22,7 +22,7 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-@Entity(name = "ORDER")
+@Entity(name = "ORDERS")
 //@Table(name = "ORDER")
 public class OrderEntity implements Serializable {
 	
@@ -41,7 +41,7 @@ public class OrderEntity implements Serializable {
     private String orderType;
     
     @Column(name = "TOTAL_PRICE", nullable = false)
-    private String totalPrice;   
+    private double totalPrice;   
     
  
     public OrderEntity() {
