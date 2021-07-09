@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.google.common.base.Stopwatch;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,12 +50,18 @@ public class OrderController {
 			
 			List<OrderEntity> orders = new ArrayList<OrderEntity>();	
 			
+			//final Stopwatch stopwatch = Stopwatch.createUnstarted().start();
+			//Thread.sleep(500);
+			//System.out.println(String.format("Stopwatch Ran for: %s ms", stopwatch.stop().elapsed(TimeUnit.MILLISECONDS)));
+
 			if (orderKey == null)
 				orderRepository.findAll().forEach(orders::add);
 			else
 				//orderRepository.findByTitleContaining(title).forEach(tutorials::add);
 				orderRepository.findAll().forEach(orders::add); // for now do a findAll itself
 	
+			//System.out.println(String.format("Stopwatch Ran for: %s ms", stopwatch.stop().elapsed(TimeUnit.MILLISECONDS)));
+
 			if (orders.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
@@ -64,7 +73,7 @@ public class OrderController {
 	}
 	
     @GetMapping("/orderslist")
-    public List < OrderEntity > getAllOrdersList() {
+    public List <OrderEntity> getAllOrdersList() {
         return orderRepository.findAll();
     }
     
@@ -72,12 +81,28 @@ public class OrderController {
 	@PostMapping("/orders")
 	public ResponseEntity<String> createOrder(@RequestBody OrderEntity orderEntity) {
 		try {
+			final Stopwatch stopwatch = Stopwatch.createUnstarted().start();
+			
 			orderRepository.save(new OrderEntity(orderEntity.getOrderKey(), orderEntity.getOrderNumber(), orderEntity.getOrderType(), orderEntity.getTotalPrice()));
+			
+			//System.out.println(String.format("Stopwatch Ran for: %s ms", stopwatch.stop().elapsed(TimeUnit.MILLISECONDS)));
+			System.out.println(String.format("Stopwatch Ran for: %s nanoseconds", stopwatch.stop().elapsed(TimeUnit.NANOSECONDS)));
+
 			return new ResponseEntity<>("Order Created", HttpStatus.CREATED);
+
 		} catch (Exception e) {
 			return new ResponseEntity<>("Order Creation Failed", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
+	
+	@GetMapping("/stopwatch")
+	public String stopwatchRun() {
+		final Stopwatch stopwatch = Stopwatch.createUnstarted().start();
+        //log.info("STOPWATCH", "TEST RUN",  String.format("Stopwatch Ran for: %s ms", stopwatch.stop().elapsed(TimeUnit.MILLISECONDS)));
+		//return String.format("Stopwatch Ran for: %s ms", stopwatch.stop().elapsed(TimeUnit.MILLISECONDS));
+		//return String.format("Stopwatch Ran for: %s microseconds", stopwatch.stop().elapsed(TimeUnit.MICROSECONDS));
+		return String.format("Stopwatch Ran for: %s ns", stopwatch.stop().elapsed(TimeUnit.NANOSECONDS));
+	}
 
 }

@@ -15,7 +15,7 @@ Main docs:
 	https://www.baeldung.com/sql-logging-spring-boot
 	https://thorben-janssen.com/how-to-activate-hibernate-statistics-to-analyze-performance-issues/#Demo_application
 	https://thorben-janssen.com/hibernate-logging-guide/ --> Use this also
-	https://www.overops.com/blog/hibernate-logging-tips-and-solutions-to-common-problems/ (overhead)
+	https://www.overops.com/blog/hibernate-logging-tips-and-solutions-to-common-problems/ (CAUTION ON overhead)
 	https://thorben-janssen.com/tips-to-boost-your-hibernate-performance/
 
 https://stackoverflow.com/questions/30118683/how-to-log-sql-statements-in-spring-boot --> more hibernate settings
@@ -65,6 +65,25 @@ ORDER_TYPE VARCHAR2(10) NOT NULL,
 TOTAL_PRICE NUMBER(10,2) NOT NULL
 );
 
+============================
+LOOP TO CREATE MANY RECORDS
+============================
+https://thorben-janssen.com/how-to-activate-hibernate-statistics-to-analyze-performance-issues/#Demo_application
+for (int i=0; i<10; i++) {
+   Product p = new Product();
+   p.setName("MyProduct"+i);
+   this.em.persist(p);
+}
+
+==============================================
+REQUEST BODY TO CREATE A NEW TABLE ROW
+==============================================
+    {
+        "orderKey": "1007",
+        "orderNumber": "1007A",
+        "orderType": "Sale",
+        "totalPrice": 776.03
+    }
 =============================================
 ISSUES TO BE RESOLVED
 =============================================
