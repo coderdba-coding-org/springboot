@@ -23,8 +23,6 @@ import java.io.Serializable;
  * The persistence class for the ORDER database table.
  */
 
-//@Getter
-//@Setter
 @Entity(name = "ORDERS")
 //@Table(name = "ORDERS")
 public class OrderEntity implements Serializable {
@@ -33,31 +31,60 @@ public class OrderEntity implements Serializable {
     //private static final long serialVersionUID = 1L;
     public static final long serialVersionUID = 1L;
 	
+    // Class variables for entity properties
     @Id
     //@GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ORDER_KEY", nullable = false)
-    //@Getter(AccessLevel.PUBLIC)
-    //@Setter(AccessLevel.PUBLIC)
     private String orderKey;
-    //public String orderKey;
-
     
     @Column(name = "ORDER_NUMBER", nullable = false)
-    //private String orderNumber;
-    public String orderNumber;
+    private String orderNumber;
     
     @Column(name = "ORDER_TYPE", nullable = false)
-    //private String orderType;
-    public String orderType;
+    private String orderType;
     
     @Column(name = "TOTAL_PRICE", nullable = false)
-    //private double totalPrice;  
-    public double totalPrice;
+    private double totalPrice;  
     
+    
+    // Getters and Setters
     public String getOrderKey() {
     	return orderKey;
     }
+    public void setOrderKey(String orderKey) {
+    	this.orderKey = orderKey;
+    }
     
+    public String getOrderNumber() {
+    	return orderNumber;
+    }
+    public void setOrderNumber(String orderNumber) {
+    	this.orderNumber = orderNumber;
+    }
+    
+    public String getOrderType() {
+    	return orderType;
+    }
+    public void setOrderType(String orderType) {
+    	this.orderType = orderType;
+    }
+    
+    public double getTotalPrice() {
+    	return totalPrice;
+    }
+    public void setTotalPrice(double totalPrice) {
+    	this.totalPrice = totalPrice;
+    }
+    
+    // Constructors
     public OrderEntity() {
     }
+    
+    public OrderEntity(String orderKey, String orderNumber, String orderType, double totalPrice) {
+    	this.orderKey = orderKey;
+    	this.orderNumber = orderNumber;
+    	this.orderType = orderType;
+    	this.totalPrice = totalPrice;
+    }
+    
 }

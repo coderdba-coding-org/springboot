@@ -67,5 +67,17 @@ public class OrderController {
     public List < OrderEntity > getAllOrdersList() {
         return orderRepository.findAll();
     }
+    
+    /*
+	@PostMapping("/orders")
+	public ResponseEntity<String> createOrder(@RequestBody OrderEntity orderEntity) {
+		try {
+			orderRepository.save(new OrderEntity(orderEntity.getOrderKey(), orderEntity.getOrderNumber(), orderEntity.getOrderType(), orderEntity.getTotalPrice()));
+			return new ResponseEntity<>("Order Created", HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>("Order Creation Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	*/
 
 }
