@@ -1,5 +1,6 @@
 package jpa;
 
+import jpa.OrderEntity;
 import jpa.OrderJPARepository;
 
 import org.springframework.stereotype.Repository;
@@ -14,17 +15,30 @@ public class OrderRepository implements OrderRepositoryInterface {
 	
     @Autowired
     OrderJPARepository orderJPARepository;
-	
+
+    
+    @Override
+    public void save(OrderEntity orderEntity) {
+        orderJPARepository.save(orderEntity);
+    }
+    
+    @Override
+    public void saveAndFlush(OrderEntity orderEntity) {
+        orderJPARepository.saveAndFlush(orderEntity);
+    }
+    
+    /*
     @Override
     public void save(Order order) {
-        OmsOrderEntity orderEntity = mapper.mapOrder(order);
-        orderRepository.save(orderEntity);
+        OrderEntity orderEntity = mapper.mapOrder(order);
+        orderJPARepository.save(orderEntity);
     }
     
     @Override
     public void saveAndFlush(Order order) {
-        OmsOrderEntity orderEntity = mapper.mapOrder(order);
-        orderRepository.saveAndFlush(orderEntity);
+        OrderEntity orderEntity = mapper.mapOrder(order);
+        orderJPARepository.saveAndFlush(orderEntity);
     }
+    */
     
 }

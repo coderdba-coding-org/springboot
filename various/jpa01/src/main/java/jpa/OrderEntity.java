@@ -23,6 +23,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Entity(name = "ORDER")
+//@Table(name = "ORDER")
 public class OrderEntity implements Serializable {
 	
 	// this Version-UID is necessary for Serializable
