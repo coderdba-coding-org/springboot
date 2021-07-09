@@ -52,6 +52,9 @@ dependencies {
     // Oracle drivers
     implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '21.1.0.0'
     
+    // Logger slf4j (looks 1.7.30 automatically comes with spring boot)
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.31'
+    
     // ADDED FOR SPRINGBOOT
     //implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.2'

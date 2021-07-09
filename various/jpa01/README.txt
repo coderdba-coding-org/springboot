@@ -10,15 +10,28 @@ https://thorben-janssen.com/how-to-activate-hibernate-statistics-to-analyze-perf
 
 GENERATE JPA STATISTICS:
 https://docs.spring.io/spring-boot/docs/2.1.9.RELEASE/reference/html/production-ready-metrics.html
-https://thorben-janssen.com/how-to-activate-hibernate-statistics-to-analyze-performance-issues/#Demo_application
-https://www.overops.com/blog/hibernate-logging-tips-and-solutions-to-common-problems/ (overhead)
-https://thorben-janssen.com/tips-to-boost-your-hibernate-performance/
+
+Main docs:
+	https://www.baeldung.com/sql-logging-spring-boot
+	https://thorben-janssen.com/how-to-activate-hibernate-statistics-to-analyze-performance-issues/#Demo_application
+	https://thorben-janssen.com/hibernate-logging-guide/ --> Use this also
+	https://www.overops.com/blog/hibernate-logging-tips-and-solutions-to-common-problems/ (overhead)
+	https://thorben-janssen.com/tips-to-boost-your-hibernate-performance/
 
 https://stackoverflow.com/questions/30118683/how-to-log-sql-statements-in-spring-boot --> more hibernate settings
 
 
 CONNECTION POOLING WITH HIBERNATE:
 http://www.mastertheboss.com/jboss-frameworks/hibernate-jpa/hibernate-configuration/configure-a-connection-pool-with-hibernate
+
+LOGGING WITH SLF4J, LOG4J etc
+https://www.baeldung.com/hibernate-logging-levels
+https://mkyong.com/spring-boot/spring-boot-slf4j-logging-example/
+https://thorben-janssen.com/hibernate-logging-guide/ --> Use this also
+https://devcases.com/java/how-to-display-real-hibernate-sql-query-using-slf4j/
+https://dzone.com/articles/logging-with-slf4j
+https://www.tutorialspoint.com/slf4j/slf4j_overview.htm
+https://stackoverflow.com/questions/30118683/how-to-log-sql-statements-in-spring-boot
 
 ISSUES:
 - findAll returning null: https://stackoverflow.com/questions/56371084/jparepository-findall-returns-empty-list
