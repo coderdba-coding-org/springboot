@@ -14,6 +14,11 @@ https://thorben-janssen.com/how-to-activate-hibernate-statistics-to-analyze-perf
 https://www.overops.com/blog/hibernate-logging-tips-and-solutions-to-common-problems/ (overhead)
 https://thorben-janssen.com/tips-to-boost-your-hibernate-performance/
 
+https://stackoverflow.com/questions/30118683/how-to-log-sql-statements-in-spring-boot --> more hibernate settings
+
+
+CONNECTION POOLING WITH HIBERNATE:
+http://www.mastertheboss.com/jboss-frameworks/hibernate-jpa/hibernate-configuration/configure-a-connection-pool-with-hibernate
 
 ISSUES:
 - findAll returning null: https://stackoverflow.com/questions/56371084/jparepository-findall-returns-empty-list
