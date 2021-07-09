@@ -52,8 +52,7 @@ public class OrderController {
 			else
 				//orderRepository.findByTitleContaining(title).forEach(tutorials::add);
 				orderRepository.findAll().forEach(orders::add); // for now do a findAll itself
-
-			
+	
 			if (orders.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
@@ -64,20 +63,9 @@ public class OrderController {
 		}
 	}
 	
-	@GetMapping("/ordersfound1")
-	public String reportOrdersExist(@RequestParam(required = false) String orderKey) {
-				
-		try {
-			
-			List<OrderEntity> orders = new ArrayList<OrderEntity>();		
-			if (orders.isEmpty()) {
-				return "No orders exist";
-			}
-			return "Orders exist";
-			
-		} catch (Exception e) {
-			return "Error checking orders";
-		}
-	}
+    @GetMapping("/orderslist")
+    public List < OrderEntity > getAllOrdersList() {
+        return orderRepository.findAll();
+    }
 
 }
