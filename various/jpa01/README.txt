@@ -38,3 +38,15 @@ ORDER_NUMBER VARCHAR2(20) NOT NULL,
 ORDER_TYPE VARCHAR2(10) NOT NULL,
 TOTAL_PRICE NUMBER(10,2) NOT NULL
 );
+
+=============================================
+ISSUES TO BE RESOLVED
+=============================================
+------------------------------------------------
+Getters and Setters in OrderEntity
+------------------------------------------------
+If class variables are private, then Getter an Setter annotations are not exposing the values to public (like Hibernate).
+Therefore, Hibernate is unable to create an OrderEntity as it cannot access those variables.
+works - Making them 'public' worked.
+fails - Keeping them private, but creating a public "get" method for the variable worked.
+works - Keeping them private, and, @Getter(AccessLevel.PUBLIC) and @Setter(AccessLevel.PUBLIC) did not work.

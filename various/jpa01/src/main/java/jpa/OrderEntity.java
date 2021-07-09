@@ -2,6 +2,8 @@ package jpa;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.AccessLevel;
+
 
 import javax.persistence.Table;
 import javax.persistence.Column;
@@ -21,10 +23,10 @@ import java.io.Serializable;
  * The persistence class for the ORDER database table.
  */
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @Entity(name = "ORDERS")
-@Table(name = "ORDERS")
+//@Table(name = "ORDERS")
 public class OrderEntity implements Serializable {
 	
 	// this Version-UID is necessary for Serializable
@@ -34,8 +36,10 @@ public class OrderEntity implements Serializable {
     @Id
     //@GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ORDER_KEY", nullable = false)
-    //private String orderKey;
-    public String orderKey;
+    //@Getter(AccessLevel.PUBLIC)
+    //@Setter(AccessLevel.PUBLIC)
+    private String orderKey;
+    //public String orderKey;
 
     
     @Column(name = "ORDER_NUMBER", nullable = false)
@@ -50,7 +54,10 @@ public class OrderEntity implements Serializable {
     //private double totalPrice;  
     public double totalPrice;
     
- 
+    public String getOrderKey() {
+    	return orderKey;
+    }
+    
     public OrderEntity() {
     }
 }
