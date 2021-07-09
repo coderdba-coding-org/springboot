@@ -68,7 +68,7 @@ public class OrderController {
         return orderRepository.findAll();
     }
     
-    /*
+    
 	@PostMapping("/orders")
 	public ResponseEntity<String> createOrder(@RequestBody OrderEntity orderEntity) {
 		try {
@@ -78,6 +78,6 @@ public class OrderController {
 			return new ResponseEntity<>("Order Creation Failed", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	*/
+	
 
 }
