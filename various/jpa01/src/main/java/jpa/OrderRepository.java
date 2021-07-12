@@ -35,6 +35,11 @@ public class OrderRepository implements OrderRepositoryInterface {
         return orderJPARepository.findAll();
     }
     
+    @Override
+    public void deleteAllInBatch() {
+        orderJPARepository.deleteAllInBatch();
+    }
+    
     /*
     @Override
     public void save(Order order) {

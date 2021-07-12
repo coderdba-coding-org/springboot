@@ -44,7 +44,7 @@ public class OrderController {
 	}
 	
 	@GetMapping("/orders")
-	public ResponseEntity<List<OrderEntity>> getAllOrders(@RequestParam(required = false) String orderKey) {
+	public ResponseEntity<List<OrderEntity>> getOrders(@RequestParam(required = false) String orderKey) {
 				
 		try {
 			
@@ -72,6 +72,33 @@ public class OrderController {
 		}
 	}
 	
+	@DeleteMapping("/orders")
+	public ResponseEntity<String> deleteOrders(@RequestParam(required = false) String orderKey) {
+				
+		try {
+			
+			//List<OrderEntity> orders = new ArrayList<OrderEntity>();	
+			
+			//final Stopwatch stopwatch = Stopwatch.createUnstarted().start();
+			//Thread.sleep(500);
+			//System.out.println(String.format("Stopwatch Ran for: %s ms", stopwatch.stop().elapsed(TimeUnit.MILLISECONDS)));
+
+			if (orderKey == null)
+				orderRepository.deleteAllInBatch();
+			else
+				//orderRepository.findByTitleContaining(title).forEach(tutorials::add);
+				orderRepository.deleteAllInBatch(); // for now do a deleteAll itself
+	
+			//System.out.println(String.format("Stopwatch Ran for: %s ms", stopwatch.stop().elapsed(TimeUnit.MILLISECONDS)));
+
+			return new ResponseEntity<>("Order(s) deleted", HttpStatus.OK);
+
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>("Order(s) could not be deleted", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
     @GetMapping("/orderslist")
     public List <OrderEntity> getAllOrdersList() {
         return orderRepository.findAll();
@@ -93,6 +120,81 @@ public class OrderController {
 		} catch (Exception e) {
 			return new ResponseEntity<>("Order Creation Failed", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	@PostMapping("/orderspopulate")
+	public ResponseEntity<String> populateOrders() {
+		
+		boolean orderError = false;
+		final Stopwatch stopwatch = Stopwatch.createUnstarted().start();
+		
+		for (int i=0; i<100; i++) {
+			   OrderEntity o = new OrderEntity();
+			   o.setOrderKey(i + "Key");
+			   o.setOrderNumber(i + "Number");
+			   o.setOrderType("Sale");
+			   o.setTotalPrice(i * 10);
+			   
+			   try {
+				   orderRepository.save(o);
+			   } catch (Exception e) {
+				   orderError = true;
+			   }
+			}
+
+		System.out.println(String.format("populateOrders(): Stopwatch Ran for: %s nanoseconds", stopwatch.stop().elapsed(TimeUnit.NANOSECONDS)));
+
+		if (orderError == true) {
+			return new ResponseEntity<>("Error in order creation of one or more orders", HttpStatus.CREATED);
+		}
+		
+
+		return new ResponseEntity<>("Orders Created", HttpStatus.CREATED);
+	}
+	
+	@PostMapping("/ordersrepopulate")
+	public ResponseEntity<String> rePopulateOrders() {
+		
+		boolean orderCreateError = false;
+		boolean orderDeleteError = false;
+		
+		// first delete all
+		try {
+			orderRepository.deleteAllInBatch();
+
+		} catch (Exception e) {
+			orderDeleteError = true;
+
+		}
+		
+		// then populate
+		final Stopwatch stopwatch = Stopwatch.createUnstarted().start();
+		
+		for (int i=0; i<100; i++) {
+			   OrderEntity o = new OrderEntity();
+			   o.setOrderKey(i + "Key");
+			   o.setOrderNumber(i + "Number");
+			   o.setOrderType("Sale");
+			   o.setTotalPrice(i * 10);
+			   
+			   try {
+				   orderRepository.save(o);
+			   } catch (Exception e) {
+				   orderCreateError = true;
+			   }
+		}
+
+		System.out.println(String.format("populateOrders(): Stopwatch Ran for: %s nanoseconds", stopwatch.stop().elapsed(TimeUnit.NANOSECONDS)));
+
+		if (orderDeleteError == true) {
+			return new ResponseEntity<>("Error in deleting orders", HttpStatus.CREATED);
+		}
+			
+		if (orderCreateError == true) {
+			return new ResponseEntity<>("Error in creating one or more orders", HttpStatus.CREATED);
+		}
+
+		return new ResponseEntity<>("Orders Created", HttpStatus.CREATED);
 	}
 	
 	

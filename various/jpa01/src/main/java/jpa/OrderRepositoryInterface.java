@@ -18,5 +18,8 @@ public interface OrderRepositoryInterface {
     public void saveAndFlush(OrderEntity orderEntity);
     
     public List<OrderEntity> findAll();
+    
+    public void deleteAllInBatch();
+
 
 }
